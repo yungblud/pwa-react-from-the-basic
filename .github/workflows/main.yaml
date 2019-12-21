@@ -12,3 +12,17 @@ jobs:
               uses: Azure/login@v1
               with:
                   creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+            - name: Install npm packages
+              shell: bash
+              run: |
+                  npm install
+
+            - name: Build app
+              shell: bash
+              run: |
+                  npm run build:prod
+            # - name: Test app
+            #   shell: bash
+            #   run: |
+            #     npm run test
