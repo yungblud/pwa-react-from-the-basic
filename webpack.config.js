@@ -1,6 +1,7 @@
 const path = require('path')
 const HtmlWebPackPlugin = require('html-webpack-plugin')
 const WebpackPwaManifest = require('webpack-pwa-manifest')
+const { GenerateSW } = require('workbox-webpack-plugin')
 
 const htmlPlugin = new HtmlWebPackPlugin({
     template: './public/index.html',
@@ -20,6 +21,10 @@ const pwaPlugin = new WebpackPwaManifest({
             sizes: [96, 128, 192, 256, 384, 512],
         },
     ],
+})
+
+const workboxPlugin = new GenerateSW({
+    include: [/\.html$/, /\.js$/],
 })
 
 const { NODE_ENV: mode } = process.env
@@ -66,5 +71,5 @@ module.exports = {
             },
         ],
     },
-    plugins: [htmlPlugin, pwaPlugin],
+    plugins: [htmlPlugin, pwaPlugin, workboxPlugin],
 }
