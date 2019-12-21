@@ -6,6 +6,10 @@ const htmlPlugin = new HtmlWebPackPlugin({
     filename: './index.html',
 })
 
+const { NODE_ENV: mode } = process.env
+const isDevelopment = mode === 'development'
+console.log('MODE:', isDevelopment ? 'DEV' : 'PROD')
+
 module.exports = {
     entry: './src/index.js',
     output: {
@@ -24,21 +28,24 @@ module.exports = {
             {
                 test: /\.css$/,
                 use: [
-                    // {
-                    //     loader: 'style-loader',
-                    // },
-                    // {
-                    //     loader: 'css-loader',
-                    //     options: {
-                    //         modules: true,
-                    //         importLoaders: 1,
-                    //         localIdentName: '[name]_[local]_[hash:base64]',
-                    //         sourceMap: true,
-                    //         minimize: true,
-                    //     },
-                    // },
-                    'style-loader',
-                    'css-loader',
+                    {
+                        loader: 'style-loader',
+                    },
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            modules: {
+                                localIdentName: isDevelopment
+                                    ? '[path][name]__[local]--[hash:base64:5]'
+                                    : '[name]__[local]--[hash:base64:5]',
+                            },
+                            importLoaders: 1,
+                            sourceMap: true,
+                            // minimize: true,
+                        },
+                    },
+                    // 'style-loader',
+                    // 'css-loader',
                 ],
             },
         ],

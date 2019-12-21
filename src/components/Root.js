@@ -1,6 +1,7 @@
 import React from 'react'
-import style from '../styles/index.css'
+import '../styles/index.css'
+import style from './Root.css'
 
-const Root = () => <div className="root">Hello Azure World</div>
+const Root = () => <div className={style.hello}>Hello Azure World</div>
 
 export default Root
