@@ -1,0 +1,16 @@
+{
+    "name": "react-memo-with-pwa",
+    "short_name": "memo",
+    "description": "react memo web app with pwa",
+    "background_color": "#ffffff",
+    "crossorigin": "use-credentials",
+    "theme_color": "#eeeeee",
+    "icons": [
+        {
+            "src": "./public/icon512.png",
+            "type": "image/png",
+            "sizes": "512x512"
+        }
+    ],
+    "filename": "manifest_builded.json"
+}
