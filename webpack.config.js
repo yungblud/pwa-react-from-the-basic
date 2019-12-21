@@ -2,26 +2,29 @@ const path = require('path')
 const HtmlWebPackPlugin = require('html-webpack-plugin')
 const WebpackPwaManifest = require('webpack-pwa-manifest')
 const { GenerateSW } = require('workbox-webpack-plugin')
+const manifest = require('./public/manifest.json')
 
 const htmlPlugin = new HtmlWebPackPlugin({
     template: './public/index.html',
     filename: './index.html',
 })
 
-const pwaPlugin = new WebpackPwaManifest({
-    name: 'react-memo-with-pwa',
-    short_name: 'memo',
-    description: 'react memo web app with pwa',
-    background_color: '#ffffff',
-    crossorigin: 'use-credentials',
-    theme_color: '#eeeeee',
-    icons: [
-        {
-            src: path.resolve('src/assets/Icon.png'),
-            sizes: [96, 128, 192, 256, 384, 512],
-        },
-    ],
-})
+// const pwaPlugin = new WebpackPwaManifest({
+//     name: 'react-memo-with-pwa',
+//     short_name: 'memo',
+//     description: 'react memo web app with pwa',
+//     background_color: '#ffffff',
+//     crossorigin: 'use-credentials',
+//     theme_color: '#eeeeee',
+//     icons: [
+//         {
+//             src: path.resolve('src/assets/Icon.png'),
+//             sizes: [96, 128, 192, 256, 384, 512],
+//         },
+//     ],
+// })
+
+const pwaPlugin = new WebpackPwaManifest(manifest)
 
 const workboxPlugin = new GenerateSW({
     include: [/\.html$/, /\.js$/],
