@@ -68,7 +68,8 @@ bower_components
 .lock-wscript
 
 # Compiled binary addons (https://nodejs.org/api/addons.html)
-build/Release
+build/
+# build/Release
 
 # Dependency directories
 node_modules/
@@ -147,5 +148,8 @@ sketch
 ### VisualStudioCode Patch ###
 # Ignore all local history of files
 .history
+
+
+dist/
 
 # End of https://www.gitignore.io/api/node,react,macos,visualstudiocode

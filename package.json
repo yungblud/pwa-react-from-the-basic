@@ -1,20 +1,29 @@
 {
-  "name": "pwa-react-from-the-basic",
-  "version": "1.0.0",
-  "main": "index.js",
-  "license": "MIT",
-  "dependencies": {
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0"
-  },
-  "devDependencies": {
-    "@babel/core": "^7.7.7",
-    "@babel/preset-env": "^7.7.7",
-    "@babel/preset-react": "^7.7.4",
-    "babel-loader": "^8.0.6",
-    "html-webpack-plugin": "^3.2.0",
-    "webpack": "^4.41.4",
-    "webpack-cli": "^3.3.10",
-    "webpack-dev-server": "^3.10.1"
-  }
+    "name": "pwa-react-from-the-basic",
+    "version": "1.0.0",
+    "main": "index.js",
+    "license": "MIT",
+    "scripts": {
+        "start:dev": "NODE_ENV=development webpack-dev-server --mode development --open --hot",
+        "build:prod": "NODE_ENV=production webpack --mode production",
+        "build:dev": "NODE_ENV=development webpack --mode development"
+    },
+    "dependencies": {
+        "react": "^16.12.0",
+        "react-dom": "^16.12.0"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.7.7",
+        "@babel/preset-env": "^7.7.7",
+        "@babel/preset-react": "^7.7.4",
+        "babel-loader": "^8.0.6",
+        "css-loader": "^3.4.0",
+        "html-webpack-plugin": "^3.2.0",
+        "style-loader": "^1.1.1",
+        "webpack": "^4.41.4",
+        "webpack-cli": "^3.3.10",
+        "webpack-dev-server": "^3.10.1",
+        "webpack-pwa-manifest": "^4.1.1",
+        "workbox-webpack-plugin": "^4.3.1"
+    }
 }
