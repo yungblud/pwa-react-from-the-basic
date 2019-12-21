@@ -1,9 +1,25 @@
 const path = require('path')
 const HtmlWebPackPlugin = require('html-webpack-plugin')
+const WebpackPwaManifest = require('webpack-pwa-manifest')
 
 const htmlPlugin = new HtmlWebPackPlugin({
-    template: './src/index.html',
+    template: './public/index.html',
     filename: './index.html',
+})
+
+const pwaPlugin = new WebpackPwaManifest({
+    name: 'react-memo-with-pwa',
+    short_name: 'memo',
+    description: 'react memo web app with pwa',
+    background_color: '#ffffff',
+    crossorigin: 'use-credentials',
+    theme_color: '#eeeeee',
+    icons: [
+        {
+            src: path.resolve('src/assets/Icon.png'),
+            sizes: [96, 128, 192, 256, 384, 512],
+        },
+    ],
 })
 
 const { NODE_ENV: mode } = process.env
@@ -13,7 +29,7 @@ console.log('MODE:', isDevelopment ? 'DEV' : 'PROD')
 module.exports = {
     entry: './src/index.js',
     output: {
-        path: path.join(__dirname, '/public'),
+        path: path.join(__dirname, '/build'),
         filename: 'index.bundle.js',
     },
     module: {
@@ -50,5 +66,5 @@ module.exports = {
             },
         ],
     },
-    plugins: [htmlPlugin],
+    plugins: [htmlPlugin, pwaPlugin],
 }
